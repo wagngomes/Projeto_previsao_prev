@@ -7,11 +7,13 @@ class AuthController {
         const { email, senha } = req.body
         try {
 
-            const login = await authService.login({ email, senha })
+            const login = await authService.login({ email, senha})
+            console.log(email, senha)
 
             res.status(200).send(login)
 
         } catch (error) {
+            console.log(email, senha)
 
             res.status(401).send({ message: error.message})
         }
