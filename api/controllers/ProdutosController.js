@@ -18,10 +18,16 @@ class ProdutosController {
                 where: { codigo },
                 include: [
                     {
-                        model: database.Fornecedores,
-                        attributes: ['descricao']
-                    }
+                        model: database.Fornecedores, 
+                        attributes: ['descricao', 'planejador_id'],
+                        include: [{
+                            model: database.Usuarios,
+                            attributes:['nome']
+                        }]
+                    },
+
                 ]
+
             })
             return res.status(200).json(infoProduto)
 
